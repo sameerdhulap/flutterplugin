@@ -37,6 +37,7 @@ jobs:
     - name: 'Update version'
       run: |
         cd branch
+        ls branch
         sed -i '' "3 s/.*/${{ env.PLUGIN_VERSION }}/" pubspec.yaml
         cat pubspec.yaml
         git status
