@@ -42,7 +42,7 @@ jobs:
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@master
       with:
-          github_token: ${{ secrets.CICD_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: Replaced Version
         
     - name: 'status'
