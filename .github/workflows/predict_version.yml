@@ -1,11 +1,10 @@
-name: plugin version prediction
-
+name: PR Checker
 on:
-  workflow_dispatch:
-  push:
-    branches: [ "cicd" ]
   pull_request:
-    branches: [ "cicd" ]
+    branches:
+      - 'main'
+    types: [labeled, opened, reopened, synchronize]
+  workflow_dispatch:
     
 permissions:
   contents: write
