@@ -25,6 +25,7 @@ jobs:
         cd main
         flutter pub get
         ls -l
+        flutter pub run pub_version_plus:main patch
         
     - name: 'status'
       run: ls -l
