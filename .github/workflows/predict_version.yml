@@ -26,6 +26,12 @@ jobs:
         flutter pub get
         ls -l
         flutter pub run pub_version_plus:main patch
-        
+        set -e
+        brew install yq
+        _pluginVersion=$( yq read pubspec.yaml version )
+        echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
+        echo "new version : ${_pluginVersion}"
     - name: 'status'
-      run: ls -l
+      run: |
+        env
+      
