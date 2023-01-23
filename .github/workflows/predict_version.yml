@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
       - 'main'
-    types: [labeled, opened, reopened, synchronize]
+    types: [labeled, opened,  synchronize]
   workflow_dispatch:
     
 permissions:
@@ -51,4 +51,5 @@ jobs:
     - name: 'status'
       run: |
         echo "${{ env.PLUGIN_VERSION }}"
+        env
       
