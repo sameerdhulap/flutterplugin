@@ -1,6 +1,6 @@
 name: pluginplatfrom
 description: Get started with the Woosmap Indoor API. View simple examples, learn the concepts, and create custom indoor maps for your site.
-version: 0.0.1
+version: 0.0.3
 homepage: https://developers.woosmap.com/products/indoor-api/get-started/
 
 environment:
