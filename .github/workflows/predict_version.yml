@@ -30,7 +30,18 @@ jobs:
         set -e
         echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
         echo "new version : ${_pluginVersion}"
+      
+    - uses: actions/checkout@v3
+      with:
+        path: 'branch'
+    - name: 'Update version'
+      run: |
+        cd branch
+        sed -i '' "3 s/.*/${{ env.PLUGIN_VERSION }}/" pubspec.yaml
+        cat pubspec.yaml
+        git status
+        
     - name: 'status'
       run: |
-        env
+        echo "${{ env.PLUGIN_VERSION }}"
       
