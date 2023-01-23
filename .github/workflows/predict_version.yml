@@ -26,7 +26,7 @@ jobs:
         flutter pub get
         ls -l
         flutter pub run pub_version_plus:main patch
-        _pluginVersion = $(sed -n '3p' pubspec.yaml)
+        _pluginVersion=$(sed -n '3p' pubspec.yaml)
         set -e
         echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
         echo "new version : ${_pluginVersion}"
