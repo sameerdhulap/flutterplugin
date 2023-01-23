@@ -15,5 +15,16 @@ jobs:
       with:
         ref: 'main'
         path: 'main'
+    - name: Install Flutter
+      uses: subosito/flutter-action@v1
+      with:
+          flutter-version: '3.3.10'
+          
+    - name: 'master version predict'
+      run: |
+        cd main
+        flutter pub get
+        ls -l
+        
     - name: 'status'
       run: ls -l
