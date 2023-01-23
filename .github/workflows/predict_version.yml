@@ -37,10 +37,10 @@ jobs:
     - name: 'Update version'
       run: |
         cd branch
-        ls -l
         sed -i "3 s/.*/${{ env.PLUGIN_VERSION }}/" pubspec.yaml
         cat pubspec.yaml
-        git status
+        git commit -m "New version prediected ${{ env.PLUGIN_VERSION }}" pubspec.yaml
+        git push
         
     - name: 'status'
       run: |
