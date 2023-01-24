@@ -15,11 +15,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - id: check_pr_labels
+    - id: check_pr_labels_major
       uses: shioyang/check-pr-labels-on-push-action@v1.0.9
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        labels: '["Major :star2:", "Minor :sparkles:","Patch :bug:"]'
+        labels: '["Major :star2:"]'
+    - id: check_pr_labels_minor
+      uses: shioyang/check-pr-labels-on-push-action@v1.0.9
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        labels: '["Minor :sparkles:"]'
+        
+    - id: check_pr_labels_patch
+      uses: shioyang/check-pr-labels-on-push-action@v1.0.9
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        labels: '["Patch :bug:"]'
   
     - uses: actions/checkout@v3
       with:
@@ -71,7 +82,9 @@ jobs:
         echo "${{ github.event.label.name }}"
         env
         echo "${{ github.head_ref || github.ref_name }}"
-        echo "${{ steps.check_pr_labels.outputs.result }}"
+        echo "${{ steps.check_pr_labels_major.outputs.result }}"
+        echo "${{ steps.check_pr_labels_minor.outputs.result }}"
+        echo "${{ steps.check_pr_labels_patch.outputs.result }}"
           
         
    
