@@ -53,6 +53,9 @@ jobs:
       with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: "Updated ${{ env.PLUGIN_VERSION }}"
+          target_branch: "${{ github.head_ref || github.ref_name }}"
+          commit_prefix: "[AUTO]"
+          
         
    
       
