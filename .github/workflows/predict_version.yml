@@ -92,14 +92,3 @@ jobs:
           commit_message: "Updated ${{ env.PLUGIN_VERSION }}"
           commit_prefix: "[AUTO]"
           
-    - name: 'status'
-      run: |
-        echo "${{ github.event.pull_request.labels.*.name }}"
-        env
-        echo "${{ github.head_ref || github.ref_name }}"
-        echo "${{ steps.check_pr_labels_major.outputs.passed }}"
-
-          
-        
-   
-      
