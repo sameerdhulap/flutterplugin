@@ -24,6 +24,7 @@ jobs:
       with:
         ref: "${{ github.base_ref }}"
         path: 'main'
+        
     - name: Install Flutter
       uses: subosito/flutter-action@v1
       with:
@@ -33,6 +34,11 @@ jobs:
       run: |
         cd main
         flutter pub get
+        
+    - name: 'Change patch version'
+      if: contains(github.event.issue.labels.*.name, 'Patch :bug:')
+      run: |
+        cd main
         flutter pub run pub_version_plus:main patch
         _pluginVersion=$(sed -n '3p' pubspec.yaml)
         set -e
