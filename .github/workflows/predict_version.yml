@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - uses: shioyang/check-pr-labels-on-push-action@v1.0.9
+    - id: check_pr_labels
+      uses: shioyang/check-pr-labels-on-push-action@v1.0.9
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         labels: '["Major :star2:", "Minor :sparkles:","Patch :bug:"]'
@@ -67,9 +68,10 @@ jobs:
           
     - name: 'status'
       run: |
-        echo "${{ env.PLUGIN_VERSION }}"
+        echo "${{ github.event.label.name }}"
         env
         echo "${{ github.head_ref || github.ref_name }}"
+        echo "${{ steps.check_pr_labels.outputs.result }}"
           
         
    
