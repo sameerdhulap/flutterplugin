@@ -21,7 +21,7 @@ jobs:
           
       - name: Update change log
         run: |
-          echo "## ${{ env.PLUGIN_VERSION }}\n" >> CHANGELOG.md
+          echo "## ${{ env.PLUGIN_VERSION }}" >> CHANGELOG.md
           cat whatsnew.md >> CHANGELOG.md
           cat CHANGELOG.md
           
