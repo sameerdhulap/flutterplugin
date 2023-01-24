@@ -10,5 +10,26 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
+        
+      - name: Capture plugin version
+        run: |
+          _prefix="version: "
+          _pluginVersionText=$(sed -n '3p' < pubspec.yaml)
+          _pluginVersion=${_pluginVersionText#"$_prefix"}
+          echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
+          echo "new version : ${_pluginVersion}"
+          
+      - name: Update change log
+        run: |
+          echo "## ${{ env.PLUGIN_VERSION }}\n" >> CHANGELOG.md
+          cat whatsnew.md >> CHANGELOG.md
+          cat CHANGELOG.md
+          
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '3.3.10'
+          
+      
     
       
