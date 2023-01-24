@@ -20,21 +20,7 @@ jobs:
       uses: danielchabr/pr-labels-checker@v3.1
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
-        hasSome: "Major :star2:"
-        
-    - name: 'check minor'
-      id: check_pr_labels_minor
-      uses: danielchabr/pr-labels-checker@v3.1
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        hasSome: "Minor :sparkles:"
-        
-    - name: 'check patch'
-      id: check_pr_labels_patch
-      uses: danielchabr/pr-labels-checker@v3.1
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        hasSome: "Patch :bug:"
+        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:"
   
     - uses: actions/checkout@v3
       with:
@@ -87,8 +73,7 @@ jobs:
         env
         echo "${{ github.head_ref || github.ref_name }}"
         echo "${{ steps.check_pr_labels_major.outputs.passed }}"
-        echo "${{ steps.check_pr_labels_minor.outputs.passed }}"
-        echo "${{ steps.check_pr_labels_patch.outputs.passed }}"
+
           
         
    
