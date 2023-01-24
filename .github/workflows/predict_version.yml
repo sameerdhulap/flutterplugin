@@ -61,7 +61,7 @@ jobs:
         rm -rf main
         
     - name: 'Change patch version'
-      if: ${{ contains( github.event.pull_request.labels.*.name, 'Patch :bug:') && !contains( github.event.pull_request.labels.*.name, 'Major :star2') && !contains( github.event.pull_request.labels.*.name, 'Minor :sparkles') }}
+      if: ${{ contains( github.event.pull_request.labels.*.name, 'Patch :bug:') && contains( github.event.pull_request.labels.*.name, 'Major :star2') == false && contains( github.event.pull_request.labels.*.name, 'Minor :sparkles') == false }}
       run: |
         cd main
         flutter pub run pub_version_plus:main patch
