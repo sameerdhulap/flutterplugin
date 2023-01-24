@@ -37,8 +37,31 @@ jobs:
         cd main
         flutter pub get
         
+    - name: 'Change Major version'
+      if: ${{ contains( github.event.pull_request.labels.*.name, 'Major :star2:')}}
+      run: |
+        cd main
+        flutter pub run pub_version_plus:main major
+        _pluginVersion=$(sed -n '3p' pubspec.yaml)
+        set -e
+        echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
+        echo "new version : ${_pluginVersion}"
+        cd ..
+        rm -rf main
+    - name: 'Change Minor version'
+      if: ${{ contains( github.event.pull_request.labels.*.name, 'Minor :sparkles') && !contains( github.event.pull_request.labels.*.name, 'Major :star2') }}
+      run: |
+        cd main
+        flutter pub run pub_version_plus:main minor
+        _pluginVersion=$(sed -n '3p' pubspec.yaml)
+        set -e
+        echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
+        echo "new version : ${_pluginVersion}"
+        cd ..
+        rm -rf main
+        
     - name: 'Change patch version'
-      if: contains( github.event.pull_request.labels.*.name, 'Patch :bug:') 
+      if: ${{ contains( github.event.pull_request.labels.*.name, 'Patch :bug:') && !contains( github.event.pull_request.labels.*.name, 'Major :star2') && !contains( github.event.pull_request.labels.*.name, 'Minor :sparkles') }}
       run: |
         cd main
         flutter pub run pub_version_plus:main patch
