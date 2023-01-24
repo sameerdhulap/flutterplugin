@@ -36,7 +36,12 @@ jobs:
         cd ..
         rm -rf main
       
-    - uses: actions/checkout@v3
+    - name: Get Source branch
+      uses: actions/checkout@v3
+      with:
+        ref: "${{ github.head_ref || github.ref_name }}"
+        
+        
     - name: 'Update version'
       run: |
         sed -i "3 s/.*/${{ env.PLUGIN_VERSION }}/" pubspec.yaml
