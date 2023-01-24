@@ -3,12 +3,12 @@ name: Publish Map JS SDK - Flutter
 on:
   push:
     branches:
-      - "main"
+      - "cicd"
 jobs:
   package_publish:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Check out Git repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
         uses: actions/checkout@v2
     
       
