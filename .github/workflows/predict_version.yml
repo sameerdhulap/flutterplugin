@@ -36,7 +36,7 @@ jobs:
         flutter pub get
         
     - name: 'Change patch version'
-      if: contains(github.event.issue.labels.*.name, 'Patch :bug:')
+      if: contains(github.event.label.name, 'Patch :bug:')
       run: |
         cd main
         flutter pub run pub_version_plus:main patch
