@@ -50,20 +50,20 @@ jobs:
         rm -rf main
       
     - name: Get Source branch
-      if: steps.check_pr_labels_major.outputs.passed == true
+      if: ${{ steps.check_pr_labels_major.outputs.passed }} == true
       uses: actions/checkout@v3
       with:
         ref: "${{ github.head_ref || github.ref_name }}"
         
         
     - name: 'Update version'
-      if: steps.check_pr_labels_major.outputs.passed == true
+      if: ${{ steps.check_pr_labels_major.outputs.passed }} == true
       run: |
         sed -i "3 s/.*/${{ env.PLUGIN_VERSION }}/" pubspec.yaml
         cat pubspec.yaml
             
     - name: Commit and push changes
-      if: steps.check_pr_labels_major.outputs.passed == true
+      if: ${{ steps.check_pr_labels_major.outputs.passed }} == true
       uses: devops-infra/action-commit-push@master
       with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
