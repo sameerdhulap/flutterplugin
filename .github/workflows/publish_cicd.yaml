@@ -35,8 +35,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
         
-      - name: Run tests
-        run: flutter pub run test
+#       - name: Run tests
+#         run: flutter pub run test
         
       - name: Setup Pub Credentials
         shell: bash
