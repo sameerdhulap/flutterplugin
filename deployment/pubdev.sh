@@ -22,6 +22,9 @@ if [ -z "${PUB_DEV_PUBLISH_EXPIRATION}" ]; then
   echo "Missing PUB_DEV_PUBLISH_EXPIRATION environment variable"
   exit 1
 fi
+# ADD THIS LINE TO CREATE THE DIRECTORY
+mkdir -p ~/.pub-cache
+
 # For MAC
 # ~/Library/Application Support/dart/pub-credentials.json
 # For Ubuntu
