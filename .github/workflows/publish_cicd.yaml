@@ -49,10 +49,10 @@ jobs:
           sh ./deployment/pubdev.sh
           
       - name: Check Publish Warnings
-        run: flutter pub publish --dry-run
+        run: pub publish --dry-run
         
- #     - name: Publish Package
- #       run: flutter pub publish -f
+      - name: Publish Package
+        run: pub publish -f
           
       
     
