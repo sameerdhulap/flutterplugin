@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - "main"
+    paths:
+      - pubspec.yaml
 jobs:
   package_publish:
     runs-on: ubuntu-latest
