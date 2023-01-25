@@ -20,7 +20,7 @@ jobs:
       uses: danielchabr/pr-labels-checker@v3.1
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
-        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:, Skip Version"
+        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:,Skip Version"
   
     - uses: actions/checkout@v3
       with:
