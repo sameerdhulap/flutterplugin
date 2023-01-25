@@ -15,12 +15,12 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-    - name: 'check major'
+    - name: 'check tag labels'
       id: check_pr_labels_major
       uses: danielchabr/pr-labels-checker@v3.1
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
-        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:"
+        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:, Skip Version"
   
     - uses: actions/checkout@v3
       with:
@@ -36,6 +36,14 @@ jobs:
       run: |
         cd main
         flutter pub get
+    
+    - name: 'Default version'
+      run: |
+        cd main
+        _pluginVersion=$(sed -n '3p' pubspec.yaml)
+        set -e
+        echo "PLUGIN_VERSION=${_pluginVersion}" >> $GITHUB_ENV
+        echo "new version : ${_pluginVersion}"
         
     - name: 'Change patch version'
       if: ${{ contains( github.event.pull_request.labels.*.name, 'Patch :bug:') }}
