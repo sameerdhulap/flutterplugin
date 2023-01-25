@@ -15,7 +15,7 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-    - name: 'check major'
+    - name: 'check tag labels'
       id: check_pr_labels_major
       uses: danielchabr/pr-labels-checker@v3.1
       with:
