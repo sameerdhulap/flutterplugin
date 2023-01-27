@@ -10,7 +10,7 @@ permissions:
   contents: write
   pull-requests: write
   actions: write
-#   checks: write
+  checks: write
 #   deployments: write
 #   id-token: write
 #   issues: write
