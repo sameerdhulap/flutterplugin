@@ -8,7 +8,7 @@ on:
     
 permissions:
   contents: write
-#   pull-requests: write
+  pull-requests: write
 #   actions: write
   checks: write
 #   deployments: write
@@ -23,7 +23,6 @@ permissions:
 
 jobs:
   Versioning:
-#     permissions: write-all
     runs-on: ubuntu-latest
     steps:
     - name: 'check tag labels'
@@ -39,7 +38,7 @@ jobs:
         path: 'main'
         
     - name: Install Flutter
-      uses: subosito/flutter-action@v1
+      uses: subosito/flutter-action@v2.8.0
       with:
           flutter-version: '3.3.10'
           
@@ -110,4 +109,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: "Updated ${{ env.PLUGIN_VERSION }}"
           commit_prefix: "[AUTO]"
-          
+          force: false
