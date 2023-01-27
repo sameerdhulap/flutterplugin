@@ -10,16 +10,16 @@ permissions:
   contents: write
   pull-requests: write
   actions: write
-  checks: write
-  deployments: write
-  id-token: write
-  issues: write
-  discussions: write
-  packages: write
-  pages: write
-  repository-projects: write
-  security-events: write
-  statuses: write
+#   checks: write
+#   deployments: write
+#   id-token: write
+#   issues: write
+#   discussions: write
+#   packages: write
+#   pages: write
+#   repository-projects: write
+#   security-events: write
+#   statuses: write
 
 jobs:
   Versioning:
