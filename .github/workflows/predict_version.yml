@@ -8,11 +8,21 @@ on:
     
 permissions:
   contents: write
-  pull-requests: write 
+  pull-requests: write
+#   actions: write
+  checks: write
+#   deployments: write
+#   id-token: write
+#   issues: write
+#   discussions: write
+#   packages: write
+#   pages: write
+#   repository-projects: write
+#   security-events: write
+#   statuses: write
 
 jobs:
   Versioning:
-    permissions: write-all
     runs-on: ubuntu-latest
     steps:
     - name: 'check tag labels'
@@ -20,7 +30,7 @@ jobs:
       uses: danielchabr/pr-labels-checker@v3.1
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
-        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:, Skip Version"
+        hasSome: "Major :star2:,Minor :sparkles:,Patch :bug:,Skip Version"
   
     - uses: actions/checkout@v3
       with:
@@ -28,7 +38,7 @@ jobs:
         path: 'main'
         
     - name: Install Flutter
-      uses: subosito/flutter-action@v1
+      uses: subosito/flutter-action@v2.8.0
       with:
           flutter-version: '3.3.10'
           
@@ -99,4 +109,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_message: "Updated ${{ env.PLUGIN_VERSION }}"
           commit_prefix: "[AUTO]"
-          
+          force: false
