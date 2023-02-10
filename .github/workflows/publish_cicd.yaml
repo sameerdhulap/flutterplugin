@@ -46,6 +46,14 @@ jobs:
           accessToken: ${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.PUB_DEV_PUBLISH_REFRESH_TOKEN }}
           
+      - name: Commit and push changes
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "Updated CHANGELOG.md"
+          commit_prefix: "[AUTO]"
+          force: false
+          
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
